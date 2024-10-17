@@ -27,7 +27,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Loader2, Plus, X } from "lucide-react";
 import { Input } from "../ui/input";
 import { saveSchedule } from "@/server/actions/schedule";
-// import _ from "lodash";
+import _ from "lodash";
 
 type Availability = {
   startTime: string;
@@ -74,10 +74,10 @@ export function ScheduleForm({
   });
 
   // Original Implementation
-  const groupedAvailabilityFields = Object.groupBy(
-    availabilityFields.map((field, index) => ({ ...field, index })),
-    (availability) => availability.dayOfWeek
-  );
+  // const groupedAvailabilityFields = Object.groupBy(
+  //   availabilityFields.map((field, index) => ({ ...field, index })),
+  //   (availability) => availability.dayOfWeek
+  // );
 
   // v1 Implementation
   // const groupedAvailabilityFields = _.groupBy(
@@ -86,10 +86,10 @@ export function ScheduleForm({
   // );
 
   // v2 Implementation
-  // const groupedAvailabilityFields = _.groupBy(
-  //   availabilityFields.map((field, index) => ({ ...field, index })),
-  //   (availability) => availability.dayOfWeek
-  // );
+  const groupedAvailabilityFields = _.groupBy(
+    availabilityFields.map((field, index) => ({ ...field, index })),
+    (availability) => availability.dayOfWeek
+  );
 
   // v3 Implementation
   // const groupedAvailabilityFields = availabilityFields
