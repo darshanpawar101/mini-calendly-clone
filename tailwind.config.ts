@@ -19,7 +19,7 @@ const config: Config = {
     extend: {
       colors: {
         fontFamily: {
-          sans: ["var(--font-sans)", ...fontFamily.sans],
+          sans: "var(--font-sans)",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

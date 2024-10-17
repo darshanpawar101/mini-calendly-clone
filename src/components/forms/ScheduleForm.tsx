@@ -74,10 +74,10 @@ export function ScheduleForm({
   });
 
   // Original Implementation
-  // const groupedAvailabilityFields = Object.groupBy(
-  //   availabilityFields.map((field, index) => ({ ...field, index })),
-  //   (availability) => availability.dayOfWeek
-  // );
+  const groupedAvailabilityFields = Object.groupBy(
+    availabilityFields.map((field, index) => ({ ...field, index })),
+    (availability) => availability.dayOfWeek
+  );
 
   // v1 Implementation
   // const groupedAvailabilityFields = _.groupBy(
@@ -92,16 +92,16 @@ export function ScheduleForm({
   // );
 
   // v3 Implementation
-  const groupedAvailabilityFields = availabilityFields
-    .map((field, index) => ({ ...field, index }))
-    .reduce((acc: any, availability) => {
-      const key = availability.dayOfWeek;
-      if (!acc[key]) {
-        acc[key] = [];
-      }
-      acc[key].push(availability);
-      return acc;
-    }, {});
+  // const groupedAvailabilityFields = availabilityFields
+  //   .map((field, index) => ({ ...field, index }))
+  //   .reduce((acc, availability) => {
+  //     const key = availability.dayOfWeek;
+  //     if (!acc[key]) {
+  //       acc[key] = [];
+  //     }
+  //     acc[key].push(availability);
+  //     return acc;
+  //   }, {});
 
   // v4 Implementation
   // const groupBy = (array: T[], key: (item: T) => string) =>
@@ -113,6 +113,22 @@ export function ScheduleForm({
   //     result[groupKey].push(currentValue);
   //     return result;
   //   }, {});
+
+  // const groupedAvailabilityFields = groupBy(
+  //   schedule.availabilities,
+  //   (availability) => availability.dayOfWeek
+  // );
+
+  // v5 Implementation
+  // const groupBy = (array: T[], key: (item: T) => string) =>
+  //   array.reduce((result: Record<string, T[]>, currentValue: T) => {
+  //     const groupKey = key(currentValue);
+  //     if (!result[groupKey]) {
+  //       result[groupKey] = [];
+  //     }
+  //     result[groupKey].push(currentValue);
+  //     return result;
+  //   }, {} as Record<string, T[]>);
 
   // const groupedAvailabilityFields = groupBy(
   //   schedule.availabilities,
@@ -191,7 +207,7 @@ export function ScheduleForm({
                   <Plus className="size-full" />
                 </Button>
                 {groupedAvailabilityFields[dayOfWeek]?.map(
-                  (field: any, labelIndex: any) => (
+                  (field, labelIndex) => (
                     <div className="flex flex-col gap-1" key={field.id}>
                       <div
                         key={labelIndex}

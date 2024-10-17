@@ -7,7 +7,6 @@ import { meetingFormSchema } from "@/schema/meetings";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,

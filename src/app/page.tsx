@@ -1,14 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { SignInButton, SignUpButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
-import {
-  Calendar,
-  CalendarRange,
-  Globe,
-  Link,
-  Link2,
-  Mail,
-} from "lucide-react";
+import { Calendar, CalendarRange, Globe, Link, Mail } from "lucide-react";
 import { redirect } from "next/navigation";
 
 export default function HomePage() {

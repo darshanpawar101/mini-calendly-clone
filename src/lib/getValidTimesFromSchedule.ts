@@ -36,10 +36,10 @@ export async function getValidTimesFromSchedule(
   if (schedule == null) return [];
 
   // Original Implementation
-  // const groupedAvailabilities = Object.groupBy(
-  //   schedule.availabilities,
-  //   (a) => a.dayOfWeek
-  // );
+  const groupedAvailabilities = Object.groupBy(
+    schedule.availabilities,
+    (a) => a.dayOfWeek
+  );
 
   // v1 Implementation
   //   const groupedAvailabilities = _.groupBy(schedule.availabilities, "dayOfWeek");
@@ -51,17 +51,17 @@ export async function getValidTimesFromSchedule(
   // );
 
   // v3 Implementation
-  const groupedAvailabilities = schedule.availabilities.reduce(
-    (acc: any, a) => {
-      const key = a.dayOfWeek;
-      if (!acc[key]) {
-        acc[key] = [];
-      }
-      acc[key].push(a);
-      return acc;
-    },
-    {}
-  );
+  // const groupedAvailabilities = schedule.availabilities.reduce(
+  //   (acc: any, a) => {
+  //     const key = a.dayOfWeek;
+  //     if (!acc[key]) {
+  //       acc[key] = [];
+  //     }
+  //     acc[key].push(a);
+  //     return acc;
+  //   },
+  //   {}
+  // );
 
   // v4 Implementation
   // const groupBy = <T>(array: T[], key: (item: T) => string) =>
